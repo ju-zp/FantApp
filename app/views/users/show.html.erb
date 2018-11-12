@@ -13,6 +13,8 @@
 <%else%>
     <h3>You have no characters yet. Create one now!</h3>
 <%end%>
-<%=form_tag(edit_user_path(@user), :method => "get") do %>
-    <%submit_tag "Edit"%>
+<%if session[:user_id] == @user.id%>
+    <%=form_tag(edit_user_path(@user), :method => "get") do %>
+        <%submit_tag "Edit"%>
+    <%end%>
 <%end%>
