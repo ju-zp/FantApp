@@ -23,7 +23,6 @@ class UsersController < ApplicationController
     end
 
     def destroy
-        #byebug
         User.find(session[:user_id]).destroy
         session.delete(:user_id)
         redirect_to "/"
