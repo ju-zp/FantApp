@@ -1,8 +1,6 @@
 <hr>
-<%=form_for @character do |f|%>
-    <%=f.label :name%>
+<%=bootstrap_form_for(@character) do |f|%>
     <%=f.text_field :name%><br>
-    <%=f.label :gender%>
     <%=f.text_field :gender%><br>
     <%=f.collection_select :race_id, Race.all, :id, :name%><br>
     <%=f.submit%>

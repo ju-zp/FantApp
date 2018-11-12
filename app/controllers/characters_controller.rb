@@ -12,8 +12,21 @@ class CharactersController < ApplicationController
         if @character.save
             redirect_to @character
         else
-            byebug 
             render 'new'
+        end
+    end
+
+    def edit
+        @character = Character.find(params[:id])
+    end
+
+    def update
+        @character = Character.find(params[:id])
+        @character.update(character_params)
+        if @character.valid?
+            redirect_to @character
+        else
+            render 'edit'
         end
     end
 
