@@ -1,9 +1,11 @@
 class CharactersController < ApplicationController
+    before_action :gender_array, only: [:edit, :new]
 
     def index
         @characters = Character.all
     end
     def new
+        
         @character = Character.new
     end
 
@@ -17,7 +19,8 @@ class CharactersController < ApplicationController
         if @character.save
             redirect_to @character
         else
-            render 'new'
+            flash[:errors] = @character.errors.full_messages
+            redirect_to new_character_path
         end
     end
 
@@ -36,6 +39,10 @@ class CharactersController < ApplicationController
     end
 
     private 
+
+    def gender_array
+        @gender = ["Male", "Female", "Non-Binary", "Other"]
+    end
 
     def character_params
         params.require(:character).permit(:name, :gender, :race_id)

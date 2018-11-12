@@ -16,7 +16,7 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         @user.update(user_params)
         if @user.valid?
-            redirect_to @user
+            redirect_to '/profile'
         else
             render 'edit'
         end

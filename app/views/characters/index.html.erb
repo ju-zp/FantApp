@@ -2,7 +2,7 @@
 <hr>
 
 <% @characters.each do |character| %>
-    <h3><%= character.name %></h3>
+    <h3><%= character.name.capitalize %></h3>
     <h5>Gender: <%= character.gender %></h5>
     <h5>Race: <%= character.race.name %></h5>
     <h5><%= character.race.bio %></h5>
