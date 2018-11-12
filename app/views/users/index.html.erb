@@ -1,0 +1,9 @@
+<h1>User Index</h1>
+<hr>
+<ul>
+<%@users.each do |u|%>
+    <li>
+        <h3><%=link_to u.username, u%></h3>
+    </li>
+<%end%>
+</ul>

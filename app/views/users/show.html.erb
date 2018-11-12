@@ -1,0 +1,18 @@
+<h1><%=@user.username%></h1>
+<hr>
+<h3>Age: <%=@user.age%></h3>
+<%if @user.characters.length > 0%>
+    <h3>Your characters are;</h3>
+    <ol>
+    <%@user.characters.each do |c|%>
+        <li>
+            <h3><%=c.name%></h3>
+        </li>
+    <%end%>
+    </ol>
+<%else%>
+    <h3>You have no characters yet. Create one now!</h3>
+<%end%>
+<%=form_tag(edit_user_path(@user), :method => "get") do %>
+    <%submit_tag "Edit"%>
+<%end%>
