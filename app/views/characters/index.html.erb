@@ -1,10 +1,10 @@
 <h1>Lord of the Rings characters</h1>
 
 <% @characters.each do |character| %>
-    <%= character.name %>
+    <h3><%= character.name %></h3>
     <%= character.gender %>
     <%= character.race.name %>
     <%= character.race.bio %>
-    <%= link_to 'See character', user_path(user) %>
+    <%= link_to 'See character', character %>
     <br>
 <%end%>
