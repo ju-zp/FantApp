@@ -1,12 +1,9 @@
 class CharactersController < ApplicationController
 
-<<<<<<< HEAD
     def index
         @characters = Character.all
-=======
     def new
         @character = Character.new
->>>>>>> 71e254244858c1921cad1aabe6b3b469c8c15a85
     end
 
     def create 
