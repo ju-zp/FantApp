@@ -6,18 +6,19 @@
     <ol>
     <%@user.characters.each do |c|%>
         <li>
-            <h3><%=c.name%></h3>
+            <h3><%=link_to c.name, c%></h3>
         </li>
     <%end%>
     </ol>
 <%else%>
     <h3>You have no characters yet. Create one now!</h3>
 <%end%>
-<%if session[:user_id] == @user.id%>
-    <%=form_tag(edit_user_path(@user), :method => "get") do %>
-        <%submit_tag "Edit"%>
-    <%end%>
-    <%=form_tag(user_path(@user), :method => "delete") do %>
-        <%submit_tag "Delete"%>
-    <%end%>
+<%=form_tag(edit_user_path(@user), :method => "get") do %>
+    <%submit_tag "Edit"%>
+<%end%>
+<%=form_tag(user_path(@user), :method => "delete") do %>
+    <%submit_tag "Delete"%>
+<%end%>
+<%=form_tag(new_character_path, :method => "get") do %>
+    <%submit_tag "Create a new Character"%>
 <%end%>
