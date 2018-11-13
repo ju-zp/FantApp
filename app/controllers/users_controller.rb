@@ -21,7 +21,7 @@ class UsersController < ApplicationController
             render 'edit'
         end
     end
-
+    
     def destroy
         User.find(session[:user_id]).destroy
         session.delete(:user_id)
@@ -31,7 +31,8 @@ class UsersController < ApplicationController
     private 
 
     def user_params
-        params.require(:user).permit(:username, :age)
+        params.require(:user).permit(:username, :age, :password, :password_confirmation)
     end
+
 
 end
