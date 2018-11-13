@@ -1,9 +1,9 @@
 <h1>Create a new chatroom!</h1>
 
-<%=form_for @chatroom do |f|%>  
-  <%=f.label :title%>
+<%=bootstrap_form_for @chatroom do |f|%>  
   <%=f.text_field :title %><br>
-  <%=f.label :description%>
   <%=f.text_field :description %><br>
+  <%=f.check_box :public%><br>
+  <%=f.collection_check_boxes :chatroom_users, User.all, :id, :username%><br>
   <%=f.submit "create"%>
 <%end%>   
