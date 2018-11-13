@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
   
   resources :users, only: [:new, :index, :edit, :update, :destroy]
+  resources :chatrooms
+  resources :messages
   get '/profile' => 'users#show'
   resources :characters
 end
