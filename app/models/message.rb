@@ -3,12 +3,13 @@ class Message < ApplicationRecord
   belongs_to :chatroom
   validates :content, presence: true
 
-  def get_messages_by_chat(id)
+  def self.get_messages_by_chat(id)
     Message.all.select{|m|m.chatroom_id == id}
   end
 
-  def get_latest_messages(id)
-
+  def self.get_latest_messages(id)
+    all_messages = get_messages_by_chat(id)
+    all_messages[all_messages.length-10..all_messages.length]
   end
 
 end
