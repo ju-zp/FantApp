@@ -9,6 +9,11 @@
 <%=form_tag(profile_path, :method => "get") do %>
     <%submit_tag "View your profile"%>
 <%end%>
+
+<%= form_for @character, method: :delete do |f|%>
+    <%= f.submit "Delete" %>
+<% end %>
+
 <%=form_tag(characters_path, :method => "get") do %>
     <%submit_tag "View all characters"%>
 <%end%>
