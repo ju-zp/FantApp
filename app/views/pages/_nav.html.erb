@@ -7,6 +7,7 @@
 <% else %>
   <nav class="navbar fixed-top navbar-light bg-light">
   <h3> FantaApp </h3>
+  <a class="navbar-brand" <%= link_to "Profle", profile_path%></a>
   <a class="navbar-brand" <%= link_to "Characters", characters_path%></a>
   <a class="navbar-brand" <%= link_to "Chatrooms", chatrooms_path%></a>
   <a class="navbar-brand" <%= link_to 'Logout', logout_path, method: :post %></a>
