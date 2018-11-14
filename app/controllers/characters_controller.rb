@@ -38,6 +38,12 @@ class CharactersController < ApplicationController
         end
     end
 
+    def destroy
+        @character = Character.find(params[:id])
+        @character.destroy
+        redirect_to profile_path
+    end
+
     private 
 
     def gender_array
