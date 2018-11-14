@@ -1,16 +1,20 @@
 <%if session[:user_id] == nil %>
-  <nav class="navbar fixed-top navbar-light bg-light">
-  
-  <h3> FantaApp </h3>
-  <a class="navbar-brand" href= <%= signin_path%>>Login</a>
+  <nav class="navbar fixed-top padding nav-justified navbar-shadow ">
+    
+  <a href="/" id="logo"><img src="<%= asset_path('ring.png') %>"></a>
+  <a class="navbar-brand btn btn-success" href= <%= signin_path%>>Login</a>
   </nav>
 <% else %>
-  <nav class="navbar fixed-top navbar-light bg-light">
-  <h3> FantaApp </h3>
-  <a class="navbar-brand" <%= link_to "Profle", profile_path%></a>
-  <a class="navbar-brand" <%= link_to "Characters", characters_path%></a>
-  <a class="navbar-brand" <%= link_to "Chatrooms", chatrooms_path%></a>
-  <a class="navbar-brand" <%= link_to 'Logout', logout_path, method: :post %></a>
+  <nav class="navbar fixed-top navbar-light navbar-shadow">
+  <div class="flex">
+    <a href="/profile" id="logo"><img src="<%= asset_path('ring.png') %>"></a>
+  </div>
+  <div class="flex">
+    <a class="navbar-brand" <%= link_to "Profile", profile_path%></a>
+    <a class="navbar-brand" <%= link_to "Characters", characters_path%></a>
+    <a class="navbar-brand" <%= link_to "Chatrooms", chatrooms_path%></a>
+    <a class="navbar-brand btn btn-outline-dark logout" <%= link_to 'Logout', logout_path, method: :post %></a>
+  </div>
 </nav>
 
 <%end%>
