@@ -5,6 +5,13 @@ class ChatroomsController < ApplicationController
     end
 
     def index
+        @public = Chatroom.public
+        if session[:user_id]
+            @private = Chatroom.private(session[:user_id])
+        else
+            @private = nil
+        end
+        
         @chatrooms = Chatroom.all
     end
     
@@ -21,8 +28,6 @@ class ChatroomsController < ApplicationController
     def show
         @chatroom = Chatroom.find(params[:id])
         @message = Message.new
-        #@previous_messages = @chatroom.messages.reverse_order.limit(10)
-        #@previous_messages = @previous_messages.reverse_order
     end
 
     private 

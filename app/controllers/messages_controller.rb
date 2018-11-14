@@ -9,7 +9,8 @@ class MessagesController < ApplicationController
         end
         ActionCable.server.broadcast 'messages',
             message: @message.content,
-            user: @user = User.find(@message.user_id)
+            user: @user = User.find(@message.user_id),
+            chatroom_id: @message.chatroom_id
         head :ok
 
     end

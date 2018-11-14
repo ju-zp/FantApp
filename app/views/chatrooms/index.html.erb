@@ -1,5 +1,15 @@
 <h1>Chatrooms</h1>
+<hr>
+<h3>Public chatrooms</h3>
 
-<%@chatrooms.each do |c|%>
+<%@public.each do |c|%>
     <h3><%=link_to c.title, c%></h3>
 <%end%> 
+
+<hr>
+<%if @private != nil%>
+    <h3>Private chatrooms</h3>
+    <%@private.each do |c|%>
+        <h3><%=link_to c.title, c%></h3>
+    <%end%>
+<%end%>
