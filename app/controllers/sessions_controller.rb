@@ -9,11 +9,14 @@ class SessionsController < ApplicationController
             @user = User.new(user_params)
             if !@user.save
                 redirect_to '/'
+                return
             end
-        else
-            return head(:forbidden) unless @user.authenticate(params[:password])
+        end
+        if @user.authenticate(params[:password])
             session[:user_id] = @user.id
             redirect_to '/profile'
+        else
+            redirect_to '/'
         end
     end
 
