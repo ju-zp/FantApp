@@ -25,3 +25,15 @@
     background-size: cover;
     color: blueviolet;
 }
+
+.flex_buttons {
+    display: flex;
+}
+
+.flex_item {
+    margin: 5px;
+}
+
+#new_character_button {
+    margin-top: 10%;
+}
