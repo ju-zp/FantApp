@@ -5,15 +5,12 @@
 
 <p>Then here we would put all the other character information like, pictures, genders yada ydad </p>
 
-<button> leave a comment for <%= @character.name %> </button>
-<%=form_tag(profile_path, :method => "get") do %>
-    <%submit_tag "View your profile"%>
-<%end%>
 
-<%= form_for @character, method: :delete do |f|%>
+ <%if session[:user_id] == @character.user_id%>
+    <%= form_for @character, method: :delete do |f|%>
     <%= f.submit "Delete" %>
+    <%end%>
 <% end %>
 
-<%=form_tag(characters_path, :method => "get") do %>
-    <%submit_tag "View all characters"%>
-<%end%>
+
+<%= link_to 'back to all characters', characters_path %>
