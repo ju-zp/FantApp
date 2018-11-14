@@ -5,9 +5,9 @@ class ChatroomsController < ApplicationController
     end
 
     def index
-        @public = Chatroom.public
+        @public = Chatroom.public_rooms
         if session[:user_id]
-            @private = Chatroom.private(session[:user_id])
+            @private = Chatroom.private_rooms(session[:user_id])
         else
             @private = nil
         end
@@ -28,6 +28,12 @@ class ChatroomsController < ApplicationController
     def show
         @chatroom = Chatroom.find(params[:id])
         @message = Message.new
+    end
+
+    def destroy
+        
+        Chatroom.find(params[:id]).destroy
+        redirect_to chatrooms_path
     end
 
     private 

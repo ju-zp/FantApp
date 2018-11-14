@@ -15,3 +15,8 @@ Add your message!
   <%=f.hidden_field :chatroom_id, value: @chatroom.id%>
   <%=f.submit "create"%>
 <%end%>  
+<%if !@chatroom.public%>
+  <%=form_for @chatroom, method: :delete do |f|%>  
+    <%=f.submit "Delete room"%>
+  <%end%>  
+<%end%>
