@@ -1,12 +1,12 @@
 <%if session[:user_id] == nil %>
-  <nav class="navbar fixed-top navbar-light bg-light">
-  
-  <h3> FantaApp </h3>
-  <a class="navbar-brand" href= <%= signin_path%>>Login</a>
+  <nav class="navbar fixed-top bg-light padding ">
+    
+  <a href="/" id="logo"><img src="<%= asset_path('ring.png') %>"></a>
+  <a class="navbar-brand btn btn-success" href= <%= signin_path%>>Login</a>
   </nav>
 <% else %>
-  <nav class="navbar fixed-top navbar-light bg-light">
-  <h3> FantaApp </h3>
+  <nav class="navbar fixed-top navbar-light bg-light padding">
+  <a href="/profile" id="logo"><img src="<%= asset_path('ring.png') %>"></a>
   <a class="navbar-brand" <%= link_to "Profle", profile_path%></a>
   <a class="navbar-brand" <%= link_to "Characters", characters_path%></a>
   <a class="navbar-brand" <%= link_to "Chatrooms", chatrooms_path%></a>

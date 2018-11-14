@@ -19,13 +19,6 @@
     background-image: url(/app/assets/images/The_Lord_of_the_Rings_Characters.jpg)
 }
 
-.hero {
-    height: 100vh;
-    width: 100%;
-    background-size: cover;
-    color: blueviolet;
-}
-
 .flex {
     display: flex;
     margin-bottom: 50px;
@@ -44,12 +37,29 @@
     margin-top: 10%;
 }
 
+.signup-form {
+    color: white;
+    border-radius: 6px; 
+    width: 50%;
+    padding: 20px;
+    }
 
-.character img {
-    position: absolute;
-    clip: rect(0px,600px,200px,0px);
+.container h1 {
+    font-size: 70px;
 }
-/* 
-.clip-circle {
-  clip-path: circle(200px at right);
-} */
+
+.padding {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#logo {
+    font-size: 20px;
+    color: #ef6730;
+}
+
+
+#logo img {
+    width: 45px;
+    height: 45px;
+}
