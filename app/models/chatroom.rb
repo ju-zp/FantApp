@@ -6,7 +6,7 @@ class Chatroom < ApplicationRecord
 
     validates :title, presence: true
 
-    def chatroom_users=(array)
+    def chatroom_user_ids=(array)
         if self.public
             User.all.each do |u|
                 chat_user = ChatroomUser.create(chatroom_id: self.id, user_id: u.id)

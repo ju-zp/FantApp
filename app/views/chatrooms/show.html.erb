@@ -1,5 +1,15 @@
 <h1><%=@chatroom.title%></h1>  
 <h2><%=@chatroom.description%></h2>
+<%if !@chatroom.public%>
+<h3>Active users:</h3>
+<ul>
+<%@chatroom.users.each do |u|%>
+  <li>
+    <h3><%=u.username%></h3>
+  </li>
+<%end%>
+</ul>
+<%end%>
 
 <div id="messages<%=@chatroom.id%>">
     
@@ -19,4 +29,4 @@ Add your message!
   <%=form_for @chatroom, method: :delete do |f|%>  
     <%=f.submit "Delete room"%>
   <%end%>  
-<%end%>
+<%end%> 
