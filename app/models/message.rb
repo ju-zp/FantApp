@@ -9,7 +9,25 @@ class Message < ApplicationRecord
 
   def self.get_latest_messages(id)
     all_messages = get_messages_by_chat(id)
-    all_messages[all_messages.length-10..all_messages.length]
+    if all_messages.length >= 10
+      all_messages[all_messages.length-10..all_messages.length]
+    else
+      all_messages
+    end
+  end
+
+  def self.parse_latest_messages(id)
+    hash = {}
+    count = 0
+    hash[:size] = get_latest_messages(id).length 
+    get_latest_messages(id).each do |m|
+      hash[count] = {
+        :name => User.find(m.user_id).username,
+        :content => m.content.gsub("\n", "")
+      }
+      count+=1
+    end
+    hash
   end
 
 end

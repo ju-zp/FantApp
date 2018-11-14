@@ -1,10 +1,19 @@
 App.messages = App.cable.subscriptions.create('MessagesChannel', {
     received: function(data){
     const messages = document.getElementById(`messages${data.chatroom_id}`)
+    messages.innerHTML = ''
     return messages.insertAdjacentHTML("beforeEnd", this.renderMessage(data));
     },
     renderMessage: function(data){
-        console.log(data)
-     return `<p> <b>${data.user.username} : <br> ${data.message} </p>`;
+        var result = ''
+        var count = parseInt(data.message.size)
+        for(var i=0; i<count; i++)
+        {
+            var test = data.message[i]
+            result = result + `<p> <b>${test.name} : <br> ${test.content}</p>`
+            
+        }
+        
+     return result;
     }
 });
