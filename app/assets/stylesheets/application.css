@@ -26,14 +26,30 @@
     color: blueviolet;
 }
 
-.flex_buttons {
+.flex {
     display: flex;
+    margin-bottom: 50px;
 }
 
-.flex_item {
-    margin: 5px;
+.flex-vertical {
+    flex-direction: column;
 }
+
+.character-image {
+    margin-right: 50px;
+}
+
 
 #new_character_button {
     margin-top: 10%;
 }
+
+
+.character img {
+    position: absolute;
+    clip: rect(0px,600px,200px,0px);
+}
+/* 
+.clip-circle {
+  clip-path: circle(200px at right);
+} */

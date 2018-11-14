@@ -1,9 +1,22 @@
-<h1>Welcome to the character:<%= @character.name %></h1>
+
+<div class=" flex">
+
+    <div class="character-image">
+    <%= image_tag(@character.race.image_url) %>
+    </div>
+
+    <div class="flex flex-vertical">
+        <h1><%= @character.name %> </h1>
+
+        <p> Gender: <%= @character.gender %> </h1>
+        <p> Race: <%= @character.race.name %> </h1>
+        <p> Description: <%= @character.race.bio %> </h1>
+    </div>
+    
+</div>
 
 
 
-<%= image_tag(@character.race.image_url) %>
-<p>Then here we would put all the other character information like, pictures, genders yada ydad </p>
  
 
  <%if session[:user_id] == @character.user_id%>
