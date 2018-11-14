@@ -13,12 +13,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class='container'>
-  <%= render './pages/nav' %>
-<br>
-<br>
-<br>
-<br>
-    <%= yield %>
+  <body>
+    <div class='container'>
+      <%= render './pages/nav' %> <br><br><br><br><br>
+
+      <%= yield %>
+
+    </div>
   </body>
 </html>
