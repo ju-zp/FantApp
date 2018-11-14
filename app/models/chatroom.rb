@@ -1,7 +1,8 @@
 class Chatroom < ApplicationRecord
-    has_many :messages
-    has_many :chatroom_users
+    has_many :messages, dependent: :destroy
+    has_many :chatroom_users, dependent: :destroy
     has_many :users, through: :chatroom_users
+    before_destroy :destroy_users
 
     validates :title, presence: true
 
@@ -20,12 +21,18 @@ class Chatroom < ApplicationRecord
         end
     end
 
-    def self.public
+    def self.public_rooms
         Chatroom.all.select{|c| c.public == true}
     end
 
-    def self.private(user_id)
+    def self.private_rooms(user_id)
         Chatroom.all.select{|c| c.user_ids.include?(user_id)}.select{|c| c.public == false}
+    end
+
+    private
+
+    def destroy_users
+        self.users.destroy_all
     end
   
 end
