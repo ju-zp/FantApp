@@ -10,7 +10,21 @@
     <%= form_for @character, method: :delete do |f|%>
     <%= f.submit "Delete character", class: "btn btn-danger"%>
     <%end%>
+    <%= form_tag(edit_character_path(@character), method: :get) do %>
+        <%= submit_tag "Edit character"%>
+    <%end%>
 <% end %>
 
 
 <%= link_to 'back to all characters', characters_path %>
+<%if @comments.length > 0%>
+    <h3>Comments</h3>
+    <%@comments.each do |c|%>
+        <h4><%=c.content%></h4>
+        <h4>Rating: <%=c.rating%>
+        <h4>By: <%=User.find(c.user_id).username%></h4><br>
+    <%end%>
+<%end%>
+
+
+<%=render 'comments/form'%>

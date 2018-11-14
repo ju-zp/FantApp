@@ -10,10 +10,11 @@ class SessionsController < ApplicationController
             if !@user.save
                 redirect_to '/'
             end
+        else
+            return head(:forbidden) unless @user.authenticate(params[:password])
+            session[:user_id] = @user.id
+            redirect_to '/profile'
         end
-        return head(:forbidden) unless @user.authenticate(params[:password])
-        session[:user_id] = @user.id
-        redirect_to '/profile'
     end
 
     def destroy

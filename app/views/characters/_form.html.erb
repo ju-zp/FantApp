@@ -1,9 +1,5 @@
 <hr>
-<%if flash.key?"errors"%>
-    <%flash[:errors].each do |e|%>
-        <h3><%=e%></h3>
-    <%end%>
-<%end%>
+
 <%=bootstrap_form_for(@character) do |f|%>
     <%=f.text_field :name%>
     <%=f.collection_select :gender, @gender, :to_s, :to_s%>

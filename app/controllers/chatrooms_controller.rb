@@ -47,13 +47,7 @@ class ChatroomsController < ApplicationController
         params.require(:chatroom).permit(:title, :description, :public, chatroom_user_ids: [])
     end
 
-    def logged_in?
-        if session[:user_id]
-            true
-        else
-            redirect_to root_path
-        end
-    end
+    
 
     def valid_user?(chatroom)
         ids = chatroom.users.map{|u| u.id}

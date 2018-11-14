@@ -4,6 +4,7 @@ class User < ApplicationRecord
     has_many :messages, dependent: :destroy
     has_many :chatroom_users, dependent: :destroy
     has_many :chatrooms, through: :chatroom_users
+    has_many :comments, dependent: :destroy
     has_secure_password
     validates :username, presence: true, uniqueness: true
     before_destroy :chatroom_destroy
