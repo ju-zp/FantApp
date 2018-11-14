@@ -36,9 +36,15 @@
     <%@comments.each do |c|%>
         <h4><%=c.content%></h4>
         <h4>Rating: <%=c.rating%>
-        <h4>By: <%=User.find(c.user_id).username%></h4><br>
+        <h4>By: <%=User.find(c.user_id).username%></h4>
+        <%if c.user_id == session[:user_id]%>
+            <%= form_for c, method: :delete do |f|%>
+                <%= f.submit "Delete comment", class: "btn btn-danger"%>
+            <%end%>
+        <%end%>
     <%end%>
 <%end%>
 
-
-<%=render 'comments/form'%>
+<%if @character.user_id != session[:user_id]%>
+    <%=render 'comments/form'%>
+<%end%>

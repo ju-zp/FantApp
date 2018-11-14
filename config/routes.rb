@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   resources :messages
   get '/profile' => 'users#show'
   resources :characters
-  resources :comments, only: [:create, :edit, :update, :destroy]
+  resources :comments, only: [:create, :destroy]
 end
