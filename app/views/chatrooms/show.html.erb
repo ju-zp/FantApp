@@ -14,11 +14,7 @@
 <div id="messages<%=@chatroom.id%>" class="chat-container">
   <%@latest_messages.each do |k,v|%>
     <%if k != :size%>
-      <%if v[:name] == User.find(session[:user_id]).username%>
-        <div style="text-align:right" class="post"><p> <b><%=v[:name]%> : <br> <%=v[:content]%></p></div>
-      <%else%>
-        <div style="text-align:left" class="post"><p> <b><%=v[:name]%> : <br> <%=v[:content]%></p></div>
-      <%end%>
+      <div class="post"><p> <b><%=v[:name]%> : <br> <%=v[:content]%></p></div>
     <%end%>
   <%end%>
 

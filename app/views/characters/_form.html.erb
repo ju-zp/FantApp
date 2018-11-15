@@ -4,7 +4,7 @@
     <%=f.text_field :name%>
     <%=f.collection_select :gender, @gender, :to_s, :to_s%>
     <%=f.collection_select :race_id, Race.all, :id, :name%><br>
-    <%=f.submit%>
+    <%=f.submit %>
 <%end%>
 
  

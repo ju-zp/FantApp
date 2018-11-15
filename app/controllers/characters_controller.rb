@@ -2,6 +2,7 @@ class CharactersController < ApplicationController
     before_action :gender_array, only: [:edit, :new, :update, :create]
     before_action :rating_array, only: [:show]
     before_action :logged_in?
+    before_action :get_character, only: [:show, :edit, :update, :destroy]
 
     def index
         if params[:race_id]
@@ -20,7 +21,6 @@ class CharactersController < ApplicationController
     end
 
     def show
-        @character = Character.find(params[:id])
         @comments = Comment.all.select{|c| c.character_id == @character.id}
         @comment = Comment.new
     end
@@ -28,6 +28,7 @@ class CharactersController < ApplicationController
     def create 
         @character = Character.new(character_params)
         @character.user_id = session[:user_id]
+        @character.slug = @character.to_slug
         if @character.save
             redirect_to @character
         else
@@ -36,12 +37,11 @@ class CharactersController < ApplicationController
     end
 
     def edit
-        @character = Character.find(params[:id])
     end
 
     def update
-        @character = Character.find(params[:id])
         @character.update(character_params)
+        @character.slug = @character.to_slug
         if @character.valid?
             redirect_to @character
         else
@@ -50,7 +50,6 @@ class CharactersController < ApplicationController
     end
 
     def destroy
-        @character = Character.find(params[:id])
         @character.destroy
         redirect_to profile_path
     end
@@ -67,6 +66,10 @@ class CharactersController < ApplicationController
 
     def character_params
         params.require(:character).permit(:name, :gender, :race_id)
+    end
+
+    def get_character
+        @character = Character.find_by_slug(params[:slug])
     end
 
 

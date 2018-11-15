@@ -6,6 +6,14 @@ class Chatroom < ApplicationRecord
 
     validates :title, presence: true
 
+    def to_slug
+        title.downcase.parameterize
+    end
+
+    def to_param
+        slug
+    end
+
     def chatroom_user_ids=(array)
         if self.public
             User.all.each do |u|

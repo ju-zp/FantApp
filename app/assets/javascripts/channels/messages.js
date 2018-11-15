@@ -13,12 +13,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
         for(var i=0; i<count; i++)
         {   
             var test = data.message[i]
-            if(data.user === test.name){
-                result = result + `<div style="text-align:right" class="post"><p> <b>${test.name} : <br> ${test.content}</p></div>`
-                console.log("something")
-            } else {
-                result = result + `<div style="text-align:left" class="post"><p> <b>${test.name} : <br> ${test.content}</p></div>`
-            }
+            result = result + `<div class="post"><p> <b>${test.name} : <br> ${test.content}</p></div>`
         }
         
         return result;

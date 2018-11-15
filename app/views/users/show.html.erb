@@ -27,14 +27,14 @@
 
     <div class=flex_item id=new_character_button>
     <%=form_tag(new_character_path, :method => "get") do %>
-        <%submit_tag "Create a new Character", class: "btn btn-success"%>
+        <%submit_tag "Create a new Character", class: "btn btn-success", name: nil%>
     <%end%>
     </div>
 <hr>
 <div class=flex_buttons>
     <div class=flex_item>
     <%=form_tag(edit_user_path(@user), :method => "get") do %>
-        <%submit_tag "Edit profile", class: "btn btn-outline-danger"%>
+        <%submit_tag "Edit profile", class: "btn btn-outline-danger", name: nil%>
     <%end%>
     </div>
 
