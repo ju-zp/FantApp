@@ -14,6 +14,12 @@ class UsersController < ApplicationController
 
     def update 
         @user = User.find(params[:id])
+        if @user.avatar.attached?
+            @user.avatar.purge
+            @user.avatar.attach(params[:avatar])
+        else
+            @user.avatar.attach(params[:avatar])
+        end
         @user.update(user_params)
         if @user.valid?
             redirect_to '/profile'
@@ -31,7 +37,7 @@ class UsersController < ApplicationController
     private 
 
     def user_params
-        params.require(:user).permit(:username, :age, :password, :password_confirmation)
+        params.require(:user).permit(:username, :age, :password, :password_confirmation, :avatar)
     end
 
 
