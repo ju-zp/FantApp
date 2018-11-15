@@ -4,6 +4,7 @@
   <%=f.text_field :title %><br>
   <%=f.text_field :description %><br>
   <%=f.check_box :public%><br>
+  <%=f.collection_select :race, @user_races, :id, :name, :prompt => true%><br>
   <%=f.collection_check_boxes :chatroom_user_ids, User.all, :id, :username%><br>
   <%=f.submit "create"%>
 <%end%>   
