@@ -1,5 +1,6 @@
 <%=bootstrap_form_for(@user) do |f|%>
     <%=f.text_field :username%><br>
+    <%=f.file_field :avatar %>
     <%=f.submit class: "btn btn-success"%>
 <%end%>
 
