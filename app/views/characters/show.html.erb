@@ -22,7 +22,7 @@
     <%= f.submit "Delete character", class: "btn btn-danger"%>
     <%end%>
     <%= form_tag(edit_character_path(@character), method: :get) do %>
-        <%= submit_tag "Edit character", name: nil%>
+        <%= submit_tag "Edit character", class: "btn btn-success", name: nil%>
     <%end%>
 <% end %>
 

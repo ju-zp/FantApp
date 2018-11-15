@@ -96,7 +96,17 @@
     box-shadow: 0 4px 10px rgba(50, 50, 93, 0.05), 0 1px 3px rgba(0, 0, 0, 0.023);
 }
 
+<<<<<<< HEAD
 .chat-container {
     max-width: 60%;
 }
 
+=======
+.navbar-light .navbar-brand:hover {
+    color:rgba(0,0,0,.6);
+}
+
+.btn {
+    margin-top: 10px;
+}
+>>>>>>> 165843f77338c0fb3e991323639a1ada5d6f35e4
