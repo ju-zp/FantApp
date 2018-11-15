@@ -1,0 +1,7 @@
+<%= form_tag("/characters", method: "get") do %>
+    <%= select_tag 'race_id', options_for_select(Race.all.collect{ |r| [r.name, r.id]} , @race) %>
+    <%= submit_tag("Search", class: "btn btn-success", style: "margin-left: 15px;") %>
+<% end %>
+
+
+

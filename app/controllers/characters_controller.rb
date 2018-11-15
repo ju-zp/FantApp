@@ -4,7 +4,15 @@ class CharactersController < ApplicationController
     before_action :logged_in?
 
     def index
-        @characters = Character.all
+        if params[:race_id]
+            @characters = Character.all.select do |character|
+                race_obj = Race.find(params[:race_id])
+                @race = [race_obj.name, race_obj.id]
+                character.race_id == params[:race_id].to_i
+            end
+        else
+            @characters = Character.all
+        end
     end
     
     def new
