@@ -9,9 +9,6 @@ class Character < ApplicationRecord
         name.downcase.parameterize
     end
 
-    def slug=
-    end
-
     def to_param
         slug
     end
