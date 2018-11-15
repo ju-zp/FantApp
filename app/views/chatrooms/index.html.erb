@@ -13,6 +13,13 @@
         <h3><%=link_to c.title, c%></h3>
     <%end%>
 <%end%>
+<hr>
+<%if @races != nil%>
+    <h3>Race chatrooms</h3>
+    <%@races.each do |c|%>
+        <h3><%=link_to c.title, c%></h3>
+    <%end%>
+<%end%>
 
 <%=form_tag(new_chatroom_path, :method => "get") do %>
     <%submit_tag "Create chatroom"%>

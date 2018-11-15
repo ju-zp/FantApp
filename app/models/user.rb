@@ -11,6 +11,14 @@ class User < ApplicationRecord
     
     before_destroy :chatroom_destroy
 
+    def get_race_ids
+        self.characters.map{|c| c.race_id}
+    end
+
+    def get_races
+        get_race_ids.map{|r| Race.find(r)}
+    end
+
     private 
 
     def chatroom_destroy
