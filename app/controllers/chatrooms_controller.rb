@@ -4,12 +4,14 @@ class ChatroomsController < ApplicationController
 
     def new
         @chatroom = Chatroom.new
+        @user_races = User.find(session[:user_id]).get_races
     end
 
     def index
         @public = Chatroom.public_rooms
         if session[:user_id]
             @private = Chatroom.private_rooms(session[:user_id])
+            @races = Chatroom.race_rooms(session[:user_id])
         else
             @private = nil
         end
@@ -18,8 +20,8 @@ class ChatroomsController < ApplicationController
     end
     
     def create 
+        
         @chatroom = Chatroom.new(chatroom_params)
- 
         if @chatroom.save
             redirect_to @chatroom
         else
@@ -45,7 +47,7 @@ class ChatroomsController < ApplicationController
     private 
 
     def chatroom_params
-        params.require(:chatroom).permit(:title, :description, :public, chatroom_user_ids: [])
+        params.require(:chatroom).permit(:title, :description, :public, :race, chatroom_user_ids: [])
     end
 
     
