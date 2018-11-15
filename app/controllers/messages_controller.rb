@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
         
         ActionCable.server.broadcast 'messages',
             message: Message.parse_latest_messages(@message.chatroom_id),
-            user: @user = User.find(@message.user_id),
+            user: @user = User.find(@message.user_id).username,
             chatroom_id: @message.chatroom_id
         head :ok
 

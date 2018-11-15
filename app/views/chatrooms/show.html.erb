@@ -11,18 +11,21 @@
 </ul>
 <%end%>
 
-<div id="messages<%=@chatroom.id%>">
+<div id="messages<%=@chatroom.id%>" class="chat-container">
   <%@latest_messages.each do |k,v|%>
     <%if k != :size%>
-    <p> <b><%=v[:name]%> : <br> <%=v[:content]%></p>
+      <%if v[:name] == User.find(session[:user_id]).username%>
+        <div style="text-align:right" class="post"><p> <b><%=v[:name]%> : <br> <%=v[:content]%></p></div>
+      <%else%>
+        <div style="text-align:left" class="post"><p> <b><%=v[:name]%> : <br> <%=v[:content]%></p></div>
+      <%end%>
     <%end%>
   <%end%>
-</div>
+
 
 Add your message!
 
-<%=form_for @message, :remote=> true do |f|%>  
-  <%=f.label :content%><br>
+<%=bootstrap_form_for @message, :remote=> true do |f|%>  
   <%=f.text_area :content %><br>
   <%=f.hidden_field :chatroom_id, value: @chatroom.id%>
   <%=f.submit "create"%>
@@ -32,3 +35,4 @@ Add your message!
     <%=f.submit "Delete room"%>
   <%end%>  
 <%end%> 
+</div>
