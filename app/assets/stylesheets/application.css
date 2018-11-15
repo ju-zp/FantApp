@@ -99,3 +99,7 @@
 .navbar-light .navbar-brand:hover {
     color:rgba(0,0,0,.6);
 }
+
+.btn {
+    margin-top: 10px;
+}

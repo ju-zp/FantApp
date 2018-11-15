@@ -25,10 +25,10 @@ Add your message!
   <%=f.label :content%><br>
   <%=f.text_area :content %><br>
   <%=f.hidden_field :chatroom_id, value: @chatroom.id%>
-  <%=f.submit "create"%>
+  <%=f.submit "Create", class: "btn btn-success"%>
 <%end%>  
 <%if !@chatroom.public%>
   <%=form_for @chatroom, method: :delete do |f|%>  
-    <%=f.submit "Delete room"%>
+    <%=f.submit "Delete room", class: "btn btn-danger"%>
   <%end%>  
 <%end%> 
