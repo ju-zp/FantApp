@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'pages#welcome'
-  get '/signin' => 'pages#login'
   mount ActionCable.server => '/cable'
-
+  
+  get '/signin' => 'pages#login'
+  get '/you-shall-not-pass' => 'pages#pass'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'

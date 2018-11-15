@@ -6,5 +6,8 @@ class PagesController < ApplicationController
 
     def login
     end
+
+    def pass
+    end
     
 end

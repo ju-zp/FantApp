@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
         if @user == nil
             @user = User.new(user_params)
             if !@user.save
-                redirect_to '/'
+                redirect_to '/you-shall-not-pass'
                 return
             end
         end
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
             session[:user_id] = @user.id
             redirect_to '/profile'
         else
-            redirect_to '/'
+            redirect_to '/you-shall-not-pass'
         end
     end
 
