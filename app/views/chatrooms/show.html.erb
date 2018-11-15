@@ -12,9 +12,11 @@
 <%end%>
 
 <div id="messages<%=@chatroom.id%>">
-    
-
-
+  <%@latest_messages.each do |k,v|%>
+    <%if k != :size%>
+    <p> <b><%=v[:name]%> : <br> <%=v[:content]%></p>
+    <%end%>
+  <%end%>
 </div>
 
 Add your message!

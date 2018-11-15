@@ -33,6 +33,7 @@ class ChatroomsController < ApplicationController
             valid_user?(@chatroom)
         end
         @message = Message.new
+        @latest_messages = Message.parse_latest_messages(@chatroom.id)
     end
 
     def destroy
