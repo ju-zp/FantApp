@@ -6,6 +6,7 @@ class User < ApplicationRecord
     has_many :chatrooms, through: :chatroom_users
     has_many :comments, dependent: :destroy
     has_secure_password
+    has_one_attached :avatar
 
     validates :username, presence: true, uniqueness: true
     
