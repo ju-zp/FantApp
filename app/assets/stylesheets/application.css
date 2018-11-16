@@ -24,6 +24,11 @@
     margin-bottom: 10px;
 }
 
+.navbar {
+    background-color: white;
+}
+
+
 .comment-flex {
     display: flex;
     justify-content: space-between;
