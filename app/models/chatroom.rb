@@ -55,7 +55,7 @@ class Chatroom < ApplicationRecord
 
     def self.race_rooms(user_id)
         room_array = []
-        race_ids = User.find(user_id).get_race_ids
+        race_ids = User.find(user_id).get_race_ids.uniq
         race_ids.each do |r|
             room_array << Chatroom.find_by(race_id: r)
         end
