@@ -4,14 +4,15 @@ class CommentsController < ApplicationController
         @comment = Comment.new(comment_params)
         @comment.user_id = session[:user_id]
         @comment.save
-        redirect_to character_path(params[:comment][:character_id])
+        character = Character.find(params[:comment][:character_id])
+        redirect_to character_path(character.slug)
     end
 
     def destroy
         comment = Comment.find(params[:id])
-        character_id = comment.character_id
+        character = Character.find(comment.character_id)
         comment.destroy
-        redirect_to character_path(character_id)
+        redirect_to character_path(character.slug)
     end
 
     private 
