@@ -13,6 +13,7 @@ class ChatroomsController < ApplicationController
         if session[:user_id]
             @private = Chatroom.private_rooms(session[:user_id])
             @races = Chatroom.race_rooms(session[:user_id])
+            #raise
         else
             @private = nil
         end
