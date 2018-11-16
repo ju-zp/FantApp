@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
 
     def create
         @user = User.find_by(username: params[:username].downcase)
+        params[:username] = params[:username].strip.downcase
         if @user == nil
             @user = User.new(user_params)
             if !@user.save

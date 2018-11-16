@@ -12,7 +12,8 @@ class MessagesController < ApplicationController
         ActionCable.server.broadcast 'messages',
             message: Message.parse_latest_messages(@message.chatroom_id),
             user: @user = User.find(@message.user_id).username,
-            chatroom_id: @message.chatroom_id
+            chatroom_id: @message.chatroom_id,
+            time: @message.created_at.strftime("%H:%M %p %a-%b-%Y")
         head :ok
 
     end

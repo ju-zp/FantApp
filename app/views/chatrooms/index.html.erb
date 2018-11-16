@@ -1,23 +1,28 @@
 <h1>Chatrooms</h1>
 <hr>
-<h3>Public chatrooms</h3>
 
-<%@public.each do |c|%>
-    <h3><%=link_to c.title, c%></h3>
-<%end%> 
 
+<%if @public.size > 0%>
+    <h3>Public chatrooms</h3>
+    <%@public.each do |c|%>
+        <h3><%=link_to c.title.titleize, c%></h3>
+    <%end%> 
+<%end%>
+
+
+<%if @private.size > 0%>
 <hr>
-<%if @private != nil%>
     <h3>Private chatrooms</h3>
     <%@private.each do |c|%>
-        <h3><%=link_to c.title, c%></h3>
+        <h3><%=link_to c.title.titleize, c%></h3>
     <%end%>
 <%end%>
+
+<%if @races.size > 0%>
 <hr>
-<%if @races != nil%>
     <h3>Race chatrooms</h3>
     <%@races.each do |c|%>
-        <h3><%=link_to c.title, c%></h3>
+        <h3><%=link_to c.title.titleize, c%></h3>
     <%end%>
 <%end%>
 

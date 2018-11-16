@@ -96,9 +96,25 @@
     box-shadow: 0 4px 10px rgba(50, 50, 93, 0.05), 0 1px 3px rgba(0, 0, 0, 0.023);
 }
 
+.user-box{
+    float: right;
+
+}
+
 
 .chat-container {
     max-width: 60%;
+}
+
+
+.message-users {
+    margin-top: 20px;
+    left: 30px;
+}
+
+.chatroom-user li {
+    list-style-image: url('bullet_icon.png');
+    
 }
 
 

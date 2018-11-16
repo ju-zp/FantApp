@@ -5,7 +5,7 @@ class ChatroomsController < ApplicationController
 
     def new
         @chatroom = Chatroom.new
-        @user_races = User.find(session[:user_id]).get_races
+        @user_races = User.find(session[:user_id]).get_races.uniq
     end
 
     def index
