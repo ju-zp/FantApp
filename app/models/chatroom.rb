@@ -4,7 +4,7 @@ class Chatroom < ApplicationRecord
     has_many :users, through: :chatroom_users
     before_destroy :destroy_users
 
-    validates :title, presence: true
+    validates :title, presence: true, uniqueness: true
 
     def to_slug
         title.downcase.parameterize
@@ -57,7 +57,10 @@ class Chatroom < ApplicationRecord
         room_array = []
         race_ids = User.find(user_id).get_race_ids.uniq
         race_ids.each do |r|
-            room_array << Chatroom.find_by(race_id: r)
+            rooms = Chatroom.all.select{|c| c.race_id == r}
+            rooms.each do |r|
+                room_array << r
+            end
         end
         room_array.reject{|c| c == nil}
     end
