@@ -23,7 +23,8 @@ class Message < ApplicationRecord
     get_latest_messages(id).each do |m|
       hash[count] = {
         :name => User.find(m.user_id).username,
-        :content => m.content.gsub("\n", "")
+        :content => m.content.gsub("\n", ""),
+        :time => m.created_at.strftime("%H:%M %p %a-%b-%Y")
       }
       count+=1
     end

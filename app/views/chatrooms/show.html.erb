@@ -1,34 +1,53 @@
-<h1><%=@chatroom.title%></h1>  
-<h2><%=@chatroom.description%></h2>
-<%if !@chatroom.public%>
-<h3>Active users:</h3>
-<ul>
-<%@chatroom.users.each do |u|%>
-  <li>
-    <h3><%=u.username%></h3>
-  </li>
-<%end%>
-</ul>
-<%end%>
+<div class="row">
 
-<div id="messages<%=@chatroom.id%>" class="chat-container">
-  <%@latest_messages.each do |k,v|%>
-    <%if k != :size%>
-      <div class="post"><p> <b><%=v[:name]%> : <br> <%=v[:content]%></p></div>
-    <%end%>
-  <%end%>
+  <div class='col-lg-8'>
+    <h1><%=@chatroom.title.titleize%></h1>
+    <br>
+    <h2>Description:</h2>
+    <h2><%=@chatroom.description.capitalize%></h2>
 
+    <div id="messages<%=@chatroom.id%>" class="chat-container">
+      <%@latest_messages.each do |k,v|%>
+        <%if k != :size%>
+          <div class="post"><p> <b><%=v[:name].titleize%> at <%=v[:time]%> : <br> <%=v[:content]%></p></div>
+        <%end%>
+      <%end%>
+    </div>
 
-Add your message!
+    <div class="chat-container">
+      Add your message!
+      <%=bootstrap_form_for @message, :remote=> true do |f|%>
+        <%=f.text_area :content%>
+        <%=f.hidden_field :chatroom_id, value: @chatroom.id%>
+        <%=f.submit "Send", class: "btn btn-success"%>
+      <%end%>  
+      <%if !@chatroom.public%>
+        <%=form_for @chatroom, method: :delete do |f|%>  
+          <%=f.submit "Delete room", class: "btn btn-danger"%>
+        <%end%>  
+      <%end%> 
+    </div>
 
-<%=bootstrap_form_for @message, :remote=> true do |f|%>  
-  <%=f.text_area :content %><br>
-  <%=f.hidden_field :chatroom_id, value: @chatroom.id%>
-  <%=f.submit "Create", class: "btn btn-success"%>
-<%end%>  
-<%if !@chatroom.public%>
-  <%=form_for @chatroom, method: :delete do |f|%>  
-    <%=f.submit "Delete room", class: "btn btn-danger"%>
-  <%end%>  
-<%end%> 
 </div>
+
+<div class="message-users">
+
+    <h2>Active users:</h2>
+    <div class="chatroom-user">
+    <ul>
+    <%@chatroom.users.uniq.each do |u|%>
+      <li>
+        <h3><%=u.username.titleize%></h3>
+      </li>
+    <%end%>
+    </ul>
+    </div>
+
+</div>
+
+</div>
+
+
+
+
+

@@ -13,7 +13,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
         for(var i=0; i<count; i++)
         {   
             var test = data.message[i]
-            result = result + `<div class="post"><p> <b>${test.name} : <br> ${test.content}</p></div>`
+            result = result + `<div class="post"><p> <b>${test.name} at ${test.time} : <br> ${test.content}</p></div>`
         }
         
         return result;

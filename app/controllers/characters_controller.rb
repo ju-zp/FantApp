@@ -5,7 +5,7 @@ class CharactersController < ApplicationController
     before_action :get_character, only: [:show, :edit, :update, :destroy]
 
     def index
-        if params[:race_id]
+        if params[:race_id] && params[:race_id] != ""
             @characters = Character.all.select do |character|
                 race_obj = Race.find(params[:race_id])
                 @race = [race_obj.name, race_obj.id]

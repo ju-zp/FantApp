@@ -62,7 +62,7 @@ class Chatroom < ApplicationRecord
         if room_array[0] == nil
             nil
         else
-            room_array
+            room_array.reject{|c| c == nil}
         end 
     end
 

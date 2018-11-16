@@ -13,4 +13,22 @@ class Character < ApplicationRecord
         slug
     end
 
+    def average_rating
+        rating = 0
+        count = 0
+        self.comments.each do |c|
+            rating += c.rating
+            count += 1
+        end
+        (rating/count.to_f).round(1)
+    end
+
+    def has_rating?
+        if self.comments.size == 0
+            false
+        else
+            true
+        end
+    end
+
 end

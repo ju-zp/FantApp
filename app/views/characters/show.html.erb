@@ -6,11 +6,15 @@
     </div>
 
     <div class="flex flex-vertical">
-        <h1><%= @character.name %> </h1>
+        <h1><%= @character.name.titleize %> </h1>
 
         <p> Gender: <%= @character.gender %> </h1>
         <p> Race: <%= @character.race.name %> </h1>
         <p> Description: <%= @character.race.bio %> </h1>
+        <p> Created by: <%= @character.user.username.titleize%> at <%=@character.created_at.strftime("%H:%M %p %a-%b-%Y")%></h1>
+        <%if @character.has_rating?%>
+            <h3> Average rating: <%=@character.average_rating%></h3>
+        <%end%>
     </div>
     
 </div>
@@ -35,7 +39,7 @@
             <h4><%=c.content%></h4>
             <div class="comment-flex">
                 <p>Rating: <%=c.rating%></p>
-                <p>By: <%=User.find(c.user_id).username%></p>
+                <p>By: <%=User.find(c.user_id).username.titleize%></p>
                 <%if c.user_id == session[:user_id]%>
                     <%= form_for c, method: :delete do |f|%>
                         <%= f.submit "Delete comment", class: "btn btn-danger"%>

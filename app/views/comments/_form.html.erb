@@ -1,5 +1,6 @@
+<hr>
 <h3>Leave a comment:</h1>
-<%=bootstrap_form_for(@comment) do |f|%>
+<%=bootstrap_form_for(@comment, :slug => @character.slug) do |f|%>
     <%=f.text_field :content%><br>
     <%=f.collection_select :rating, @rating, :to_i, :to_i%><br>
     <%=f.hidden_field :character_id, value: @character.id%>
