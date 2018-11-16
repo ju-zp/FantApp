@@ -14,7 +14,7 @@
     <%end%>
 <%end%>
 <hr>
-<%if @races != nil%>
+<%if @races > 0%>
     <h3>Race chatrooms</h3>
     <%@races.each do |c|%>
         <h3><%=link_to c.title.titleize, c%></h3>
