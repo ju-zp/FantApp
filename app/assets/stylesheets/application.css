@@ -110,7 +110,7 @@
     left: 30px;
 }
 
-.chatroom-user li {
+.chatroom-user ul li {
     list-style-image: url('bullet_icon.png');
     
 }
