@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
         end
         if @user.authenticate(params[:password])
             session[:user_id] = @user.id
+            Chatroom.add_to_public_chats(@user)
             redirect_to '/profile'
         else
             redirect_to '/you-shall-not-pass'

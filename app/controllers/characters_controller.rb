@@ -30,6 +30,7 @@ class CharactersController < ApplicationController
         @character.user_id = session[:user_id]
         @character.slug = @character.to_slug
         if @character.save
+            Chatroom.add_to_race_chats(User.find(session[:user_id]), params[:character][:race_id])
             redirect_to @character
         else
             render 'new' 

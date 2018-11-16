@@ -65,6 +65,20 @@ class Chatroom < ApplicationRecord
         room_array.reject{|c| c == nil}
     end
 
+    def self.add_to_public_chats(user)
+        Chatroom.public_rooms.each do |c|
+            c.users << user
+            c.save
+        end
+    end
+
+    def self.add_to_race_chats(user, id)
+        Chatroom.all.select{|c| c.race_id == id.to_i}.each do |c|
+            c.users << user
+            c.save
+        end 
+    end
+
     private
 
     def destroy_users
