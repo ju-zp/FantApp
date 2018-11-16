@@ -1,30 +1,27 @@
 <h1>Chatrooms</h1>
 <hr>
-
-
 <h3>Public chatrooms</h3>
+
 <%@public.each do |c|%>
     <h3><%=link_to c.title.titleize, c%></h3>
-<%end%> 
+<%end%>
 
 
-
-
-
+<%if @private.length > 0%>
 <hr>
     <h3>Private chatrooms</h3>
     <%@private.each do |c|%>
         <h3><%=link_to c.title.titleize, c%></h3>
     <%end%>
+<%end%>
 
-
-
+<%if @races != nil%>
 <hr>
     <h3>Race chatrooms</h3>
     <%@races.each do |c|%>
         <h3><%=link_to c.title.titleize, c%></h3>
     <%end%>
-
+<%end%>
 
 <%=form_tag(new_chatroom_path, :method => "get") do %>
     <%submit_tag "Create chatroom", class: "btn btn-success", name: nil%>
