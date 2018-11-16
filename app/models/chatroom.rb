@@ -59,11 +59,7 @@ class Chatroom < ApplicationRecord
         race_ids.each do |r|
             room_array << Chatroom.find_by(race_id: r)
         end
-        if room_array[0] == nil
-            nil
-        else
-            room_array.reject{|c| c == nil}
-        end 
+        room_array.reject{|c| c == nil}
     end
 
     private
