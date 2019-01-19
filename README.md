@@ -9,6 +9,8 @@ Users will have to sign up or login to create their own profile. From their prof
 
 Users are able to join and create chatrooms. If a chatroom is public every user has the ability to send and recieve live messages. User can create private rooms in two ways. They can select other users that they want to join the chat, they need to include themselves if they wish to be in the chat. The other way to make a chat is by race. If a user has a character of the same race as a chat they have access and can send and recieve messages. Private chats can be deleted at any time from within the chatroom, public chats cannot be deleted.
 
+![](/public/fantapp.png)
+
 ### Technologies
 
 * Ruby on Rails 
